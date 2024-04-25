@@ -15,14 +15,14 @@ public class MyQueue<E> {
         if (isEmpty()) {
             throw new NoSuchElementException("Queue is empty");
         }
-        return list.remove(0); // Remove the first element (front of the queue)
+        return list.remove(0);
     }
 
     public E peek() {
         if (isEmpty()) {
             throw new NoSuchElementException("Queue is empty");
         }
-        return list.get(0); // Get the first element (front of the queue)
+        return list.get(0); //  gets the element in the front of the queue
     }
 
     public boolean isEmpty() {

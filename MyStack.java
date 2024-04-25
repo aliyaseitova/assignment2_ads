@@ -13,14 +13,14 @@ public class MyStack<E> {
         if (isEmpty()) {
             throw new RuntimeException("Stack is empty");
         }
-        return list.remove(list.size() - 1); // Remove the last element (top of the stack)
+        return list.remove(list.size() - 1); // removing the last element
     }
 
     public E peek() {
         if (isEmpty()) {
             throw new RuntimeException("Stack is empty");
         }
-        return list.get(list.size() - 1); // Get the last element (top of the stack)
+        return list.get(list.size() - 1); // gets the peek of the stack
     }
 
     public boolean isEmpty() {
