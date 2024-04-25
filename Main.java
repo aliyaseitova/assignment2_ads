@@ -5,7 +5,11 @@ import java.util.LinkedList;
 public class Main {
     public static void main(String[] args) {
 
-
+        MyList<Integer> arrayList = new MyArrayList<>();
+        arrayList.add(5);
+        arrayList.add(10);
+        arrayList.add(1, 7);
+        System.out.println("MyArrayList: " + arrayList.get(1));
 
         MyList<String> linkedList = new MyLinkedList<>();
         linkedList.add("Hello");
