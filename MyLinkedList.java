@@ -70,7 +70,7 @@ public class MyLinkedList<E> implements MyList<E> {
 
     public E get(int index) {
         if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("The index is out of bounds");
+            throw new IndexOutOfBoundsException("The index is out of bound");
         }
         return getNode(index).data;
     }
