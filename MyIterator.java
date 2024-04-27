@@ -1,4 +1,4 @@
-public interface MyIterator<E> {
+public interface MyIterator<T> {
     boolean hasNext();
-    E next();
+    T next();
 }

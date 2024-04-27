@@ -1,17 +1,17 @@
 import java.util.NoSuchElementException;
 
-public class MyLinkedList<E> implements MyList<E> {
-    private static class Node<E> {
-        E data;
-        Node<E> next;
+public class MyLinkedList<T> implements MyList<T> {
+    private static class Node<T> {
+        T data;
+        Node<T> next;
 
-        Node(E data) {
+        Node(T data) {
             this.data = data;
             this.next = null;
         }
     }
 
-    private Node<E> head;
+    private Node<T> head;
     private int size;
 
     public MyLinkedList() {
@@ -19,12 +19,12 @@ public class MyLinkedList<E> implements MyList<E> {
         size = 0;
     }
 
-    public void add(E element) {
-        Node<E> newNode = new Node<>(element);
+    public void add(T element) {
+        Node<T> newNode = new Node<>(element);
         if (head == null) {
             head = newNode;
         } else {
-            Node<E> current = head;
+            Node<T> current = head;
             while (current.next != null) {
                 current = current.next;
             }
@@ -33,50 +33,50 @@ public class MyLinkedList<E> implements MyList<E> {
         size++;
     }
 
-    public void add(int index, E element) {
+    public void add(int index, T element) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("Index out of bounds");
         }
         if (index == 0) {
-            Node<E> newNode = new Node<>(element);
+            Node<T> newNode = new Node<>(element);
             newNode.next = head;
             head = newNode;
         } else {
-            Node<E> previous = getNode(index - 1);
-            Node<E> newNode = new Node<>(element);
+            Node<T> previous = getNode(index - 1);
+            Node<T> newNode = new Node<>(element);
             newNode.next = previous.next;
             previous.next = newNode;
         }
         size++;
     }
 
-    public E remove(int index) {
+    public T remove(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index out of bounds");
         }
         if (index == 0) {
-            E removedData = head.data;
+            T removedData = head.data;
             head = head.next;
             size--;
             return removedData;
         } else {
-            Node<E> previous = getNode(index - 1);
-            E removedData = previous.next.data;
+            Node<T> previous = getNode(index - 1);
+            T removedData = previous.next.data;
             previous.next = previous.next.next;
             size--;
             return removedData;
         }
     }
 
-    public E get(int index) {
+    public T get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("The index is out of bounds");
         }
         return getNode(index).data;
     }
 
-    private Node<E> getNode(int index) {
-        Node<E> current = head;
+    private Node<T> getNode(int index) {
+        Node<T> current = head;
         for (int i = 0; i < index; i++) {
             current = current.next;
         }
@@ -91,8 +91,8 @@ public class MyLinkedList<E> implements MyList<E> {
         return size == 0;
     }
 
-    public boolean contains(E element) {
-        Node<E> current = head;
+    public boolean contains(T element) {
+        Node<T> current = head;
         while (current != null) {
             if (current.data.equals(element)) {
                 return true;
@@ -107,12 +107,12 @@ public class MyLinkedList<E> implements MyList<E> {
         size = 0;
     }
 
-    public MyIterator<E> iterator() {
+    public MyIterator<T> iterator() {
         return new LinkedListIterator();
     }
 
-    private class LinkedListIterator implements MyIterator<E> {
-        private Node<E> current;
+    private class LinkedListIterator implements MyIterator<T> {
+        private Node<T> current;
 
         public LinkedListIterator() {
             current = head;
@@ -122,11 +122,11 @@ public class MyLinkedList<E> implements MyList<E> {
             return current != null;
         }
 
-        public E next() {
+        public T next() {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
-            E data = current.data;
+            T data = current.data;
             current = current.next;
             return data;
         }

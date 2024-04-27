@@ -1,11 +1,11 @@
-public interface MyList<E> {
-    void add(E element);
-    void add(int index, E element);
-    E get(int index);
-    E remove(int index);
+public interface MyList<T> {
+    void add(T element);
+    void add(int index, T element);
+    T get(int index);
+    T remove(int index);
     int size();
     boolean isEmpty();
-    boolean contains(E element);
+    boolean contains(T element);
     void clear();
-    MyIterator<E> iterator();
+    MyIterator<T> iterator();
 }

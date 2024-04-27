@@ -1,5 +1,5 @@
 import java.util.NoSuchElementException;
-public class MyArrayList<E> implements MyList<E> {
+public class MyArrayList<T> implements MyList<T> {
     private Object[] array;
     private int size;
     private static final int DEFAULT_CAPACITY = 10;
@@ -9,7 +9,7 @@ public class MyArrayList<E> implements MyList<E> {
         this.size = 0;
     }
 
-    public void add(E element) {
+    public void add(T element) {
         if (size == array.length) {
             Object[] newArray = new Object[array.length * 2];
             System.arraycopy(array, 0, newArray, 0, array.length);
@@ -18,7 +18,7 @@ public class MyArrayList<E> implements MyList<E> {
         array[size++] = element;
     }
 
-    public void add(int index, E element) {
+    public void add(int index, T element) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("Index out of bounds");
         }
@@ -35,11 +35,11 @@ public class MyArrayList<E> implements MyList<E> {
         size++;
     }
 
-    public E remove(int index) {
+    public T remove(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index out of bounds");
         }
-        E removedElement = get(index);
+        T removedElement = get(index);
         for (int i = index; i < size - 1; i++) {
             array[i] = array[i + 1];
         }
@@ -48,14 +48,14 @@ public class MyArrayList<E> implements MyList<E> {
         return removedElement;
     }
 
-    public E get(int index) {
+    public T get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index out of bounds");
         }
-        return (E) array[index];
+        return (T) array[index];
     }
 
-    public void set(int index, E element) {
+    public void set(int index, T element) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index out of bounds");
         }
@@ -70,7 +70,7 @@ public class MyArrayList<E> implements MyList<E> {
         return size == 0;
     }
 
-    public boolean contains(E element) {
+    public boolean contains(T element) {
         for (int i = 0; i < size; i++) {
             if (array[i].equals(element)) {
                 return true;
@@ -86,18 +86,18 @@ public class MyArrayList<E> implements MyList<E> {
         size = 0;
     }
 
-    public MyIterator<E> iterator() {
+    public MyIterator<T> iterator() {
         return new ArrayListIterator();
     }
 
-    private class ArrayListIterator implements MyIterator<E> {
+    private class ArrayListIterator implements MyIterator<T> {
         private int currentIndex = 0;
 
         public boolean hasNext() {
             return currentIndex < size;
         }
 
-        public E next() {
+        public T next() {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }

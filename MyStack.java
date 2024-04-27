@@ -1,22 +1,22 @@
-public class MyStack<E> {
-    private MyArrayList<E> list;
+public class MyStack<T> {
+    private MyArrayList<T> list;
 
     public MyStack() {
         list = new MyArrayList<>();
     }
 
-    public void push(E element) {
+    public void push(T element) {
         list.add(element);
     }
 
-    public E pop() {
+    public T pop() {
         if (isEmpty()) {
             throw new RuntimeException("Stack is empty");
         }
         return list.remove(list.size() - 1); // removing the last element
     }
 
-    public E peek() {
+    public T peek() {
         if (isEmpty()) {
             throw new RuntimeException("Stack is empty");
         }
