@@ -1,21 +1,21 @@
-public class MyMinHeap<E extends Comparable<E>> {
-    private MyArrayList<E> list;
+public class MyMinHeap<T extends Comparable<T>> {
+    private MyArrayList<T> list;
 
     public MyMinHeap() {
         list = new MyArrayList<>();
     }
 
-    public void insert(E element) {
+    public void insert(T element) {
         list.add(element);
         heapifyUp(list.size() - 1);
     }
 
-    public E deleteMin() {
+    public T deleteMin() {
         if (isEmpty()) {
             throw new RuntimeException("Heap is empty");
         }
-        E min = list.get(0);
-        E last = list.remove(list.size() - 1);
+        T min = list.get(0);
+        T last = list.remove(list.size() - 1);
         if (!isEmpty()) {
             list.set(0, last);
             heapifyDown(0);
@@ -56,7 +56,7 @@ public class MyMinHeap<E extends Comparable<E>> {
     }
 
     private void swap(int i, int j) {
-        E temp = list.get(i);
+        T temp = list.get(i);
         list.set(i, list.get(j));
         list.set(j, temp);
     }

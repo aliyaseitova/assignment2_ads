@@ -1,24 +1,24 @@
 import java.util.NoSuchElementException;
 
-public class MyQueue<E> {
-    private MyLinkedList<E> list;
+public class MyQueue<T> {
+    private MyLinkedList<T> list;
 
     public MyQueue() {
         list = new MyLinkedList<>();
     }
 
-    public void offer(E element) {
+    public void offer(T element) {
         list.add(element);
     }
 
-    public E poll() {
+    public T poll() {
         if (isEmpty()) {
             throw new NoSuchElementException("Queue is empty");
         }
         return list.remove(0);
     }
 
-    public E peek() {
+    public T peek() {
         if (isEmpty()) {
             throw new NoSuchElementException("Queue is empty");
         }
